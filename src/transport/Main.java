@@ -9,6 +9,8 @@ public class Main {
                 "Желтый",
                 0,
                 "Россия",
+                "черный",
+                180,
                 "механическая",
                 "Седан",
                 null,
@@ -22,6 +24,8 @@ public class Main {
                 "Черный",
                 2020,
                 "Германия",
+                "",
+                300,
                 "АКП",
                 "Седан",
                 "а888аа 038",
@@ -36,6 +40,8 @@ public class Main {
                 2021,
                 "Германия",
                 null,
+                350,
+                null,
                 null,
                 null,
                 5,
@@ -48,6 +54,8 @@ public class Main {
                 "Красный",
                 2018,
                 "Южная Корея",
+                "",
+                -5,
                 "АКП",
                 "Кроссовер",
                 null,
@@ -62,6 +70,8 @@ public class Main {
                 2016,
                 null,
                 null,
+                220,
+                null,
                 "Седан",
                 "м222мм 777",
                 4,
@@ -73,5 +83,12 @@ public class Main {
 
         ladaGranta.changeSeasonTyre(8);
         System.out.println(ladaGranta);
+        System.out.println();
+
+        Bus bus1 = new Bus("Ikarus", "Ikarus 180", 1970, "Венгрия", "Белый", 63);
+        Bus bus2 = new Bus("ЛиАЗ", "ЛиАЗ-677", 1985, "Россия", "Желтый", 70);
+        Bus bus3 = new Bus("Yutong", "Yutong ZK6118HA", 2000, "Китай", "Серый", 120);
+        System.out.println(bus1.toString() + '\n' + bus2 + '\n' + bus3);
+        System.out.println("Созданное кол-во автобусов: " + Bus.counter);
     }
 }
