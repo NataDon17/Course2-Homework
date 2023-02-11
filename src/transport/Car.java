@@ -1,13 +1,9 @@
 package transport;
 
 
-public class Car {
-    private final String brand;
-    private final String model;
+public class Car extends Transport {
     double engineVolume;
     private String color;
-    private final int productionYear;
-    private final String productionCountry;
     private String transmission;
     private final String bodyType;
     private String serialNumber;
@@ -21,18 +17,17 @@ public class Car {
                String color,
                int productionYear,
                String productionCountry,
+               String bodyColor,
+               double maxSpeed,
                String transmission,
                String bodyType,
                String serialNumber,
                int numberOfSeats,
                boolean typeTyre,
                Key key) {
-        this.brand = (brand == null || brand.isEmpty() ? "default" : brand);
-        this.model = (model == null || model.isEmpty() ? "default" : model);
+        super(brand, model, productionYear, productionCountry, bodyColor, maxSpeed);
         this.engineVolume = (engineVolume <= 0 ? 1.5 : engineVolume);
-        this.color = (color == null || color.isEmpty() ? "Белый" : color);
-        this.productionYear = (productionYear <= 0 ? 2000 : productionYear);
-        this.productionCountry = (productionCountry == null || productionCountry.isEmpty() ? "default" : productionCountry);
+        this.color = (color == null || color.isEmpty() ? "белый" : color);
         this.transmission = (transmission == null || transmission.isEmpty() ? "не определено" : transmission);
         this.bodyType = (bodyType == null || bodyType.isEmpty() ? "Седан" : bodyType);
         this.serialNumber = (serialNumber == null || serialNumber.isEmpty() ? "x???xx ???" : serialNumber);
@@ -89,6 +84,10 @@ public class Car {
         this.transmission = transmission;
     }
 
+    public String getBodyType() {
+        return bodyType;
+    }
+
     public String getSerialNumber() {
         return serialNumber;
     }
@@ -97,36 +96,16 @@ public class Car {
         this.serialNumber = serialNumber;
     }
 
+    public int getNumberOfSeats() {
+        return numberOfSeats;
+    }
+
     public boolean isTypeTyre() {
         return typeTyre;
     }
 
     public void setTypeTyre(boolean typeTyre) {
         this.typeTyre = typeTyre;
-    }
-
-    public String getBrand() {
-        return brand;
-    }
-
-    public String getModel() {
-        return model;
-    }
-
-    public int getProductionYear() {
-        return productionYear;
-    }
-
-    public String getProductionCountry() {
-        return productionCountry;
-    }
-
-    public String getBodyType() {
-        return bodyType;
-    }
-
-    public int getNumberOfSeats() {
-        return numberOfSeats;
     }
 
     public Key getKey() {
@@ -162,13 +141,9 @@ public class Car {
 
     @Override
     public String toString() {
-        return "Car " +
-                "марка: " + brand +
-                ", модель:" + model +
+        return "Car: " + super.toString() +
                 ", объем двигателя: " + engineVolume +
                 ", цвет: " + color +
-                ", год выпуска: " + productionYear +
-                ", страна-производител: " + productionCountry +
                 ", коробка передач: " + transmission +
                 ", тип кузова: " + bodyType +
                 ", рег. номер: " + serialNumber +
