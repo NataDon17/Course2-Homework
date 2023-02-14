@@ -1,26 +1,21 @@
 package transport;
 
-public class Transport {
+public abstract class Transport implements Competing {
     private final String brand;
     private final String model;
-    private final int productionYear;
-    private final String productionCountry;
-    private String bodyColor;
-    private double maxSpeed;
+    private final double engineVolume;
 
     public Transport(String brand,
                      String model,
-                     int productionYear,
-                     String productionCountry,
-                     String bodyColor,
-                     double maxSpeed) {
+                     double engineVolume) {
         this.brand = (brand == null || brand.isEmpty() ? "default" : brand);
         this.model = (model == null || model.isEmpty() ? "default" : model);
-        this.productionYear = (productionYear <= 0 ? 2000 : productionYear);
-        this.productionCountry = (productionCountry == null || productionCountry.isEmpty() ? "default" : productionCountry);
-        this.bodyColor = (bodyColor == null || bodyColor.isEmpty() ? "белый" : bodyColor);
-        this.maxSpeed = (maxSpeed < 0 || maxSpeed > 400 ? 150 : maxSpeed);
+        this.engineVolume=(engineVolume <= 0 ? 1.5 : engineVolume);
     }
+
+    abstract void startMoving ();
+    abstract void endMoving ();
+
 
     public String getBrand() {
         return brand;
@@ -30,37 +25,16 @@ public class Transport {
         return model;
     }
 
-    public int getProductionYear() {
-        return productionYear;
+    public double getEngineVolume() {
+        return engineVolume;
     }
 
-    public String getProductionCountry() {
-        return productionCountry;
-    }
-
-    public String getBodyColor() {
-        return bodyColor;
-    }
-
-    public void setBodyColor(String bodyColor) {
-        this.bodyColor = bodyColor;
-    }
-
-    public double getMaxSpeed() {
-        return maxSpeed;
-    }
-
-    public void setMaxSpeed(double maxSpeed) {
-        this.maxSpeed = maxSpeed;
-    }
 
     @Override
     public String toString() {
         return "марка: " + brand +
                 ", модель: " + model +
-                ", год выпуска: " + productionYear +
-                ", страна-производитель: " + productionCountry +
-                ", цвет кузова: " + bodyColor +
-                ", максимальная скорость передвижения: " + maxSpeed;
+                ", объем двигателя: " + engineVolume
+                ;
     }
 }
