@@ -21,6 +21,8 @@ public class DriverCategoryB<T extends Car> extends Driver {
     }
 
     public String getCarMessage(T car) {
-        return "Водитель категории В " + getFullName() + " управляет л/а " + car.getBrand() + " " + car.getModel() + " и будет участвовать в заезде.";
+        return "Водитель категории В " + getFullName() +
+                " управляет л/а " + car.getBrand() + " " + car.getModel() +
+                " и будет участвовать в заезде.";
     }
 }
