@@ -2,93 +2,38 @@ package transport;
 
 public class Main {
     public static void main(String[] args) {
-        Car ladaGranta = new Car(
-                "",
-                "Granta",
-                -1,
-                "Желтый",
-                0,
-                "Россия",
-                "черный",
-                180,
-                "механическая",
-                "Седан",
-                null,
-                5,
-                true,
-                null);
-        Car audiA8 = new Car(
-                "Audi",
-                "A8 50 L TDI quattro",
-                3.0,
-                "Черный",
-                2020,
-                "Германия",
-                "",
-                300,
-                "АКП",
-                "Седан",
-                "а888аа 038",
-                4,
-                true,
-                new Car.Key(true, true));
-        Car bmwZ8 = new Car(
-                "BMW",
-                "Z8",
-                3,
-                "Черный",
-                2021,
-                "Германия",
-                null,
-                350,
-                null,
-                null,
-                null,
-                5,
-                true,
-                new Car.Key(true, true));
-        Car kiaSportage4 = new Car(
-                "Kia",
-                "Sportage 4-го поколения",
-                2.4,
-                "Красный",
-                2018,
-                "Южная Корея",
-                "",
-                -5,
-                "АКП",
-                "Кроссовер",
-                null,
-                3,
-                false,
-                new Car.Key(true, false));
-        Car hyundaiAvante = new Car(
-                "Hyundai",
-                "Avante",
-                1.6,
-                "",
-                2016,
-                null,
-                null,
-                220,
-                null,
-                "Седан",
-                "м222мм 777",
-                4,
-                false,
-                new Car.Key(false, true));
+        Car audi = new Car("Audi", "A8", 3);
+        Car bmw = new Car("BMW", "Z8", 3);
+        Car kia = new Car("Kia", "Sportage", 2.4);
+        Car lada = new Car("Lada", "Granta", 1.8);
+        System.out.println(audi.toString() + '\n' + bmw + '\n' + kia + '\n' + lada);
+        Bus bus1 = new Bus("Ikarus", "Ikarus 180", 2);
+        Bus bus2 = new Bus("ЛиАЗ", "ЛиАЗ-677", 0);
+        Bus bus3 = new Bus("Yutong", "Yutong ZK6118HA", 0);
+        Bus bus4 = new Bus("ПАЗ", "ПАЗ-3205", 0);
+        System.out.println(bus1.toString() + '\n' + bus2 + '\n' + bus3 + '\n' + bus4);
+        Truck truck1 = new Truck("Tatra", "30-Sport", 13);
+        Truck truck2 = new Truck("Scania", "S580", 15);
+        Truck truck3 = new Truck("KAMAZ", "65225", 13);
+        Truck truck4 = new Truck("Volvo", "Wild Viking", 13);
+        System.out.println(truck1.toString() + '\n' + truck2 + '\n' + truck3 + '\n' + truck4);
 
-        System.out.println(ladaGranta.toString() + '\n' + audiA8 + '\n' + bmwZ8 + '\n' + kiaSportage4 + '\n' + hyundaiAvante);
-        System.out.println();
+        DriverCategoryB<Car> driver1 = new DriverCategoryB<>(
+                "Сидоров Иван Петрович",
+                true,
+                5);
+        System.out.println(driver1.getCarMessage(kia));
 
-        ladaGranta.changeSeasonTyre(8);
-        System.out.println(ladaGranta);
-        System.out.println();
+        DriverCategoryC<Bus> driver2 = new DriverCategoryC<>(
+                "Петров Сидор Иванович",
+                true,
+                10);
+        System.out.println(driver2.getCarMessage(bus2));
 
-        Bus bus1 = new Bus("Ikarus", "Ikarus 180", 1970, "Венгрия", "Белый", 63);
-        Bus bus2 = new Bus("ЛиАЗ", "ЛиАЗ-677", 1985, "Россия", "Желтый", 70);
-        Bus bus3 = new Bus("Yutong", "Yutong ZK6118HA", 2000, "Китай", "Серый", 120);
-        System.out.println(bus1.toString() + '\n' + bus2 + '\n' + bus3);
-        System.out.println("Созданное кол-во автобусов: " + Bus.counter);
+        DriverCategoryD<Truck> driver3 = new DriverCategoryD<>(
+                "Иванов Петр Сидорович",
+                true,
+                12);
+        System.out.println(driver3.getCarMessage(truck4));
     }
 }
