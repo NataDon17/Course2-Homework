@@ -2,20 +2,63 @@ package transport;
 
 public class Car extends Transport implements Competing {
 
+    enum BodyType {
+        SEDAN("Седан"),
+        HATCHBACK("Хетчбэк"),
+        COUPE("Купе"),
+        STATION_WAGON("Универсал"),
+        SUV("Внедорожник"),
+        CROSSOVER("Кроссовер"),
+        PICKUP_TRUCK("Пикап"),
+        VAN("Фургон"),
+        MINIVAN("Минивэн");
+
+        private String bodyType;
+
+        BodyType(String bodyType) {
+            this.bodyType = bodyType;
+        }
+
+        public String getBodyType() {
+            return bodyType;
+        }
+
+        public void setBodyType(String bodyType) {
+            this.bodyType = bodyType;
+        }
+
+        @Override
+        public String toString() {
+            return "Тип кузова: " + getBodyType();
+        }
+    }
+
+    private BodyType bodyType;
+
     public Car(String brand,
                String model,
-               double engineVolume) {
+               double engineVolume,
+               BodyType bodyType) {
         super(brand, model, engineVolume);
+        this.bodyType = bodyType;
+    }
+
+    public BodyType getBodyType() {
+        return bodyType;
+    }
+
+    public void setBodyType(BodyType bodyType) {
+        this.bodyType = bodyType;
     }
 
     @Override
     void startMoving() {
-        System.out.println("Автомобиль " +getBrand()+" начинает движение");
+        System.out.println("Автомобиль " + getBrand() + " начинает движение");
     }
 
     @Override
     void endMoving() {
-        System.out.println("Автомобиль "+getBrand()+"заканчивает движение");
+        System.out.println("Автомобиль " + getBrand() + "заканчивает движение");
     }
 
     @Override
@@ -34,7 +77,21 @@ public class Car extends Transport implements Competing {
     }
 
     @Override
+    void getType() {
+        System.out.println(Type.CAR);
+    }
+
+    @Override
+    void printType() {
+        if (getBodyType() == null) {
+            System.out.println(getBrand() + ": " + "Данных по транспортному средству недостаточно.");
+        } else {
+            System.out.println(getBrand() + ": " + getBodyType());
+        }
+    }
+
+    @Override
     public String toString() {
-        return "Car: " + super.toString();
+        return "Car: " + super.toString() + ", " + bodyType;
     }
 }

@@ -10,12 +10,16 @@ public abstract class Transport implements Competing {
                      double engineVolume) {
         this.brand = (brand == null || brand.isEmpty() ? "default" : brand);
         this.model = (model == null || model.isEmpty() ? "default" : model);
-        this.engineVolume=(engineVolume <= 0 ? 1.5 : engineVolume);
+        this.engineVolume = (engineVolume <= 0 ? 1.5 : engineVolume);
     }
 
-    abstract void startMoving ();
-    abstract void endMoving ();
+    abstract void startMoving();
 
+    abstract void endMoving();
+
+    abstract void getType();
+
+    abstract void printType();
 
     public String getBrand() {
         return brand;
@@ -28,7 +32,6 @@ public abstract class Transport implements Competing {
     public double getEngineVolume() {
         return engineVolume;
     }
-
 
     @Override
     public String toString() {

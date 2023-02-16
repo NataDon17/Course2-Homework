@@ -2,20 +2,72 @@ package transport;
 
 public class Truck extends Transport implements Competing {
 
+    enum LiftingCapacity {
+        N1(3.5F, null),
+        N2(12F, 3.5F),
+        N3(null, 12F);
+
+        private Float upperLimit;
+        private Float lowerLimit;
+
+        LiftingCapacity(Float upperLimit, Float lowerLimit) {
+            this.upperLimit = upperLimit;
+            this.lowerLimit = lowerLimit;
+        }
+
+        public Float getUpperLimit() {
+            return upperLimit;
+        }
+
+        public void setUpperLimit(Float upperLimit) {
+            this.upperLimit = upperLimit;
+        }
+
+        public Float getLowerLimit() {
+            return lowerLimit;
+        }
+
+        public void setLowerLimit(Float lowerLimit) {
+            this.lowerLimit = lowerLimit;
+        }
+
+        @Override
+        public String toString() {
+            if (lowerLimit == null)
+                return "Грузоподъемность: до " + getUpperLimit() + " тонн";
+            else if (upperLimit == null)
+                return "Грузоподъемность: от " + getLowerLimit() + " тонн";
+            else
+                return "Грузоподъемность: от " + getLowerLimit() + " тонн до " + getUpperLimit() + " тонн";
+        }
+    }
+
+    private LiftingCapacity liftingCapacity;
+
     public Truck(String brand,
                  String model,
-                 double engineVolume) {
+                 double engineVolume,
+                 LiftingCapacity liftingCapacity) {
         super(brand, model, engineVolume);
+        this.liftingCapacity = liftingCapacity;
+    }
+
+    public LiftingCapacity getLiftingCapacity() {
+        return liftingCapacity;
+    }
+
+    public void setLiftingCapacity(LiftingCapacity liftingCapacity) {
+        this.liftingCapacity = liftingCapacity;
     }
 
     @Override
     void startMoving() {
-        System.out.println("Грузовик "+getBrand()+" начинает движение");
+        System.out.println("Грузовик " + getBrand() + " начинает движение");
     }
 
     @Override
     void endMoving() {
-        System.out.println("Грузовик "+getBrand()+" заканчивает движение");
+        System.out.println("Грузовик " + getBrand() + " заканчивает движение");
     }
 
     @Override
@@ -34,7 +86,21 @@ public class Truck extends Transport implements Competing {
     }
 
     @Override
+    void getType() {
+        System.out.println(Type.TRUCK);
+    }
+
+    @Override
+    void printType() {
+        if (getLiftingCapacity() == null) {
+            System.out.println(getBrand() + ": " + "Данных по транспортному средству недостаточно.");
+        } else {
+            System.out.println(getBrand() + ": " + getLiftingCapacity());
+        }
+    }
+
+    @Override
     public String toString() {
-        return "Truck: " + super.toString();
+        return "Truck: " + super.toString() + ", " + liftingCapacity;
     }
 }
