@@ -21,6 +21,8 @@ public abstract class Transport implements Competing {
 
     abstract void printType();
 
+    abstract void passDiagnostics ();
+
     public String getBrand() {
         return brand;
     }

@@ -91,6 +91,11 @@ public class Car extends Transport implements Competing {
     }
 
     @Override
+    void passDiagnostics() {
+        System.out.println(getBrand()+": Легковой автомобиль должен пройти диагностику");
+    }
+
+    @Override
     public String toString() {
         return "Car: " + super.toString() + ", " + bodyType;
     }
