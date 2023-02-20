@@ -52,7 +52,13 @@ public class Main {
         System.out.println();
 
         kia.passDiagnostics();
-        bus4.passDiagnostics();
+
+        try {
+            bus4.passDiagnostics();
+        } catch (TransportTypeException e){
+            System.out.println("Автобусы не должны проходить диагностику.");
+        }
+
         truck4.passDiagnostics();
 
     }

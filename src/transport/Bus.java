@@ -1,7 +1,5 @@
 package transport;
 
-import java.io.IOException;
-
 public class Bus extends Transport implements Competing {
 
     enum Capacity {
@@ -104,12 +102,8 @@ public class Bus extends Transport implements Competing {
     }
 
     @Override
-    void passDiagnostics() {
-        try {
+    void passDiagnostics() throws TransportTypeException {
             throw new TransportTypeException();
-        } catch (TransportTypeException e) {
-            System.out.println("Автобусы не должны проходить диагностику.");
-        }
     }
 
     @Override
