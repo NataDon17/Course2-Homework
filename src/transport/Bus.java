@@ -102,6 +102,11 @@ public class Bus extends Transport implements Competing {
     }
 
     @Override
+    void passDiagnostics() throws TransportTypeException {
+            throw new TransportTypeException();
+    }
+
+    @Override
     public String toString() {
         return "Bus: " + super.toString() + ", " + capacity;
     }

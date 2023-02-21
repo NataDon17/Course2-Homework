@@ -1,7 +1,7 @@
 package transport;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws TransportTypeException {
         Car audi = new Car("Audi", "A8", 3, Car.BodyType.SEDAN);
         Car bmw = new Car("BMW", "Z8", 3, Car.BodyType.SUV);
         Car kia = new Car("Kia", "Sportage", 2.4, Car.BodyType.MINIVAN);
@@ -49,5 +49,17 @@ public class Main {
         truck1.getType();
         truck2.printType();
         truck3.printType();
+        System.out.println();
+
+        kia.passDiagnostics();
+
+        try {
+            bus4.passDiagnostics();
+        } catch (TransportTypeException e){
+            System.out.println("Автобусы не должны проходить диагностику.");
+        }
+
+        truck4.passDiagnostics();
+
     }
 }
