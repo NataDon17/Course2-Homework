@@ -1,6 +1,8 @@
 package transport;
 
-public class Car extends Transport implements Competing {
+import java.util.List;
+
+public class Car<T extends DriverCategoryB> extends Transport implements Competing {
 
     enum BodyType {
         SEDAN("Седан"),
@@ -38,8 +40,9 @@ public class Car extends Transport implements Competing {
     public Car(String brand,
                String model,
                double engineVolume,
-               BodyType bodyType) {
-        super(brand, model, engineVolume);
+               BodyType bodyType,
+               List<Mechanic> mechanics) {
+        super(brand, model, engineVolume, mechanics);
         this.bodyType = bodyType;
     }
 
@@ -92,7 +95,7 @@ public class Car extends Transport implements Competing {
 
     @Override
     void passDiagnostics() {
-        System.out.println(getBrand()+": Легковой автомобиль должен пройти диагностику");
+        System.out.println(getBrand() + ": Легковой автомобиль должен пройти диагностику");
     }
 
     @Override

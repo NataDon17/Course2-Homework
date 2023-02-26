@@ -1,5 +1,7 @@
 package transport;
 
+import java.util.List;
+
 public class Bus extends Transport implements Competing {
 
     enum Capacity {
@@ -49,8 +51,9 @@ public class Bus extends Transport implements Competing {
     public Bus(String brand,
                String model,
                double engineVolume,
-               Capacity capacity) {
-        super(brand, model, engineVolume);
+               Capacity capacity,
+               List<Mechanic> mechanics) {
+        super(brand, model, engineVolume, mechanics);
         this.capacity = capacity;
     }
 
