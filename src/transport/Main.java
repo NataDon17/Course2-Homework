@@ -56,7 +56,6 @@ public class Main {
                 12);
         System.out.println(driver3.getCarMessage(truck4));
 
-
         bmw.getType();
         audi.printType();
         lada.printType();

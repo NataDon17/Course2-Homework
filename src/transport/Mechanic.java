@@ -39,4 +39,5 @@ public class Mechanic {
                 fullName +
                 ", место работы: " + company;
     }
+
 }

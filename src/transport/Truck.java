@@ -104,7 +104,7 @@ public class Truck extends Transport implements Competing {
 
     @Override
     void passDiagnostics() {
-        System.out.println(getBrand()+": Грузовой автомобиль должен пройти диагностику");
+        System.out.println(getBrand() + ": Грузовой автомобиль должен пройти диагностику");
     }
 
     @Override

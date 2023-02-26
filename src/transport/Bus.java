@@ -106,7 +106,7 @@ public class Bus extends Transport implements Competing {
 
     @Override
     void passDiagnostics() throws TransportTypeException {
-            throw new TransportTypeException();
+        throw new TransportTypeException();
     }
 
     @Override

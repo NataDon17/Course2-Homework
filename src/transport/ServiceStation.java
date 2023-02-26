@@ -26,6 +26,7 @@ public class ServiceStation {
         transports.remove();
         for (Transport t : transports) {
             System.out.println(t.getBrand());
+
         }
     }
 }

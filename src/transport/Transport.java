@@ -4,7 +4,6 @@ import java.util.List;
 
 import static transport.ServiceStation.addMachineToQueue;
 
-
 public abstract class Transport<T extends Driver> implements Competing {
     private final String brand;
     private final String model;
