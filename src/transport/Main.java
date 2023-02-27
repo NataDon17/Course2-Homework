@@ -3,7 +3,7 @@ package transport;
 import java.util.*;
 
 public class Main {
-    public static void main(String[] args) throws TransportTypeException {
+    public static void main(String[] args) throws TransportTypeException, CloneNotSupportedException {
         Mechanic mechanic1 = new Mechanic("Валера Колесов", "ООО Колесо");
         Mechanic mechanic2 = new Mechanic("Толя Бамперов", "ООО Бампер");
         Mechanic mechanic3 = new Mechanic("Миша Двигателев", "ЗАО Двигатель");
@@ -106,5 +106,18 @@ public class Main {
         Transport.checkTypeForMaintenance(bus1);
         Transport.checkTypeForMaintenance(truck2);
         transportQueue.carryMaintenance();
+
+        Car audiClone = (Car) audi.clone();
+        Car kiaClone = (Car) kia.clone();
+        Map<String, List> carListMap = new HashMap<>();
+        carListMap.put(audi.getBrand(), mechanicsCar);
+        carListMap.put(bmw.getBrand(), mechanicsCar);
+        carListMap.put(audiClone.getBrand(), mechanicsCar);
+        carListMap.put(kia.getBrand(), mechanicsCar);
+        carListMap.put(kiaClone.getBrand(), mechanicsCar);
+
+        for (Map.Entry<String, List> car : carListMap.entrySet()) {
+            System.out.println("Автомобиль: " + car.getKey() + ", " + "его механики: " + car.getValue());
+        }
     }
 }

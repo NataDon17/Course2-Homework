@@ -2,8 +2,7 @@ package transport;
 
 import java.util.List;
 
-
-public class Car<T extends DriverCategoryB> extends Transport implements Competing {
+public class Car<T extends DriverCategoryB> extends Transport implements Competing, Cloneable {
 
     enum BodyType {
         SEDAN("Седан"),
@@ -102,5 +101,10 @@ public class Car<T extends DriverCategoryB> extends Transport implements Competi
     @Override
     public String toString() {
         return "Car: " + super.toString() + ", " + bodyType;
+    }
+
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        return super.clone();
     }
 }
