@@ -45,7 +45,7 @@ abstract class Driver {
     public String toString() {
         return "Водитель: " +
                 "ФИО: " + fullName + '\'' +
-                "наличие водительских прав: " + validDriversLicense +
-                "стаж вождения: " + experienceDriving;
+                ", наличие водительских прав: " + (validDriversLicense?"имеются":"отсутсвуют") +
+                ", стаж вождения: " + experienceDriving+" лет.";
     }
 }
