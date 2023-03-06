@@ -115,9 +115,19 @@ public class Main {
         carListMap.put(audiClone.getBrand(), mechanicsCar);
         carListMap.put(kia.getBrand(), mechanicsCar);
         carListMap.put(kiaClone.getBrand(), mechanicsCar);
-
         for (Map.Entry<String, List> car : carListMap.entrySet()) {
             System.out.println("Автомобиль: " + car.getKey() + ", " + "его механики: " + car.getValue());
+        }
+        System.out.println();
+
+        Set<Driver> drivers = new HashSet<>();
+        drivers.add(driver3);
+        drivers.add(driver2);
+        drivers.add(driver1);
+        drivers.add(driver2);
+        Iterator<Driver> driverIterator = drivers.iterator();
+        while (driverIterator.hasNext()) {
+            System.out.println(driverIterator.next());
         }
     }
 }
